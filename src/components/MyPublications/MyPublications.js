@@ -12,6 +12,7 @@ import Chip from "@material-ui/core/Chip";
 import DoneIcon from '@material-ui/icons/Done';
 import CloseIcon from '@material-ui/icons/Close';
 import {NavLink as ToLink} from "react-router-dom";
+import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles({
     root: {
@@ -40,40 +41,42 @@ const MyPublications = () => {
     }, [dispatch]);
 
     const publications = myPublications.map(e => (
-        <Box boxShadow={3} className={classes.root} key={e._id} component={ToLink} to={'/cocktail/'+e._id}>
-            <Card>
-                <CardActionArea>
-                    <CardMedia
-                        className={classes.media}
-                        image={e.image}
-                        title={e.name}
-                    />
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="h2">
-                            {e.name}
-                        </Typography>
-                        {e.publish ?
-                            <Chip
-                                label="Publish"
-                                icon={<DoneIcon />}
-                            />:
-                            <Chip
-                                label="Unpublished"
-                                style={{background: '#DE2900', color: '#ffffff'}}
-                                icon={<CloseIcon style={{color: '#ffffff'}} />}
-                            />
-                        }
-                    </CardContent>
-                </CardActionArea>
-            </Card>
-        </Box>
+        <Grid item xs={3} style={{padding: '5px'}} key={e._id}>
+            <Box boxShadow={3} className={classes.root} component={ToLink} to={'/cocktail/' + e._id}>
+                <Card>
+                    <CardActionArea>
+                        <CardMedia
+                            className={classes.media}
+                            image={e.image}
+                            title={e.name}
+                        />
+                        <CardContent>
+                            <Typography gutterBottom variant="h5" component="h2">
+                                {e.name}
+                            </Typography>
+                            {e.publish ?
+                                <Chip
+                                    label="Publish"
+                                    icon={<DoneIcon/>}
+                                /> :
+                                <Chip
+                                    label="Unpublished"
+                                    style={{background: '#DE2900', color: '#ffffff'}}
+                                    icon={<CloseIcon style={{color: '#ffffff'}}/>}
+                                />
+                            }
+                        </CardContent>
+                    </CardActionArea>
+                </Card>
+            </Box>
+        </Grid>
     ));
     return (
         <div>
             <Typography gutterBottom variant="h4" component="h2">Your cocktails</Typography>
-            <div className={classes.list}>
+            <Grid container className={classes.list}>
                 {publications}
-            </div>
+            </Grid>
         </div>
     );
 };

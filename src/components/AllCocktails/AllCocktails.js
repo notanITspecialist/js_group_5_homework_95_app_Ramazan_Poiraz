@@ -40,8 +40,8 @@ const AllCocktails = () => {
     }, [dispatch]);
 
     const allCocktails = cocktails && cocktails.map(e => (
-        <Grid item xs={3} style={{padding: '0 5px'}}>
-            <Box boxShadow={3} className={classes.root} key={e._id} component={ToLink} to={'/cocktail/' + e._id}>
+        <Grid item xs={3} style={{padding: '5px'}} key={e._id}>
+            <Box boxShadow={3} className={classes.root} component={ToLink} to={'/cocktail/' + e._id}>
                 <Card>
                     <CardActionArea>
                         <CardMedia
