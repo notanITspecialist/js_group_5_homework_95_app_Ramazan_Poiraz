@@ -54,10 +54,17 @@ const Cocktail = props => {
                 </Grid>
                 <Grid item>
                     <Box m={2}>
-                        <Chip
-                            label="Publish"
-                            icon={cocktail.publish ? <DoneIcon/> : <CloseIcon/>}
-                        />
+                        {cocktail.publish ?
+                            <Chip
+                                label="Publish"
+                                icon={<DoneIcon/>}
+                            /> :
+                            <Chip
+                                label="Unpublished"
+                                style={{background: '#DE2900', color: '#ffffff'}}
+                                icon={<CloseIcon style={{color: '#ffffff'}}/>}
+                            />
+                        }
                     </Box>
                 </Grid>
             </Grid>
