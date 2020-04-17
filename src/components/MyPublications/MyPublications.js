@@ -52,10 +52,17 @@ const MyPublications = () => {
                         <Typography gutterBottom variant="h5" component="h2">
                             {e.name}
                         </Typography>
-                        <Chip
-                            label="Publish"
-                            icon={e.publish ? <DoneIcon /> : <CloseIcon />}
-                        />
+                        {e.publish ?
+                            <Chip
+                                label="Publish"
+                                icon={<DoneIcon />}
+                            />:
+                            <Chip
+                                label="Unpublished"
+                                style={{background: '#DE2900', color: '#ffffff'}}
+                                icon={<CloseIcon style={{color: '#ffffff'}} />}
+                            />
+                        }
                     </CardContent>
                 </CardActionArea>
             </Card>
